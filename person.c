@@ -1,4 +1,6 @@
+# include <stdlib.h>
 # include "person.h"
+
 
 Person* createPerson(int src,int dest){
     Person* t = (Person*)malloc(sizeof(Person));
