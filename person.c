@@ -15,3 +15,9 @@ PersonList* insert(Person *p, PersonList *list){
     t -> next = list;
     return t;
 }
+
+int length(PersonList *list){
+    if(list!=NULL){
+        return 1 + length(list->next);
+    }
+}

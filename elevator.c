@@ -37,3 +37,22 @@ PersonList* exitElevator(Elevator *e){
         sort_in_out(e->persons,t,e->currentFloor);
     return t;
 }
+
+void sort_in_out2(PersonList *in,PersonList *out,int capacity){
+    if(length(in)<capacity){
+        insert(out -> person,in);
+        out = (out->next);
+        sort_in_out2(in,out,capacity);
+        }
+    }
+
+
+PersonList* enterElevator(Elevator *e, PersonList *waitingList){
+    sort_in_out2(e->persons,waitingList,e->capacity);
+    return waitingList;
+
+}
+
+void stepElevator(Building *b){
+    
+}
