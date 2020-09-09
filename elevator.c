@@ -54,5 +54,18 @@ PersonList* enterElevator(Elevator *e, PersonList *waitingList){
 }
 
 void stepElevator(Building *b){
-    
+    if(b->elevator->currentFloor==b->elevator->targetFloor){
+        exitElevator(b->elevator);
+        enterElevator(b->elevator,(b->waitingLists)[b->elevator->currentFloor]);
+
+    }
+    else{
+        if(b->elevator->currentFloor>b->elevator->targetFloor){
+            b->elevator->currentFloor--;
+        }
+        else{
+            b->elevator->currentFloor++;
+        }
+
+    }
 }
