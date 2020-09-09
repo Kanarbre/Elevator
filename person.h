@@ -13,7 +13,7 @@ typedef struct _PersonList {
 
 Person* createPerson(int src, int dest);
 PersonList* insert(Person *p, PersonList *list);
-void sort_in_out(PersonList *in,PersonList *out,int currentFloor);
+PersonList* sort_in_out(PersonList *in,int currentFloor);
 int length(PersonList *list);
 
 

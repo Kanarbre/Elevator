@@ -18,24 +18,25 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     return t;
 }
 
-void sort_in_out(PersonList *in,PersonList *out,int currentFloor){
+PersonList* sort_in_out(PersonList *in,int currentFloor){
     if(in!=NULL){
         if(((in -> person)-> dest) == currentFloor){
-            out = insert(in -> person,out);
-            in = (in->next);
-            sort_in_out(in,out,currentFloor);
+            return sort_in_out(in->next,currentFloor);
         }
         else{
-            sort_in_out(in->next,out,currentFloor);
+            return insert(in->person,sort_in_out(in->next,currentFloor));
         }
     }
+    else{
+            return in;
+    }
+
 
 }
 
 PersonList* exitElevator(Elevator *e){
-    PersonList *t = NULL;
-        sort_in_out(e->persons,t,e->currentFloor);
-    return t;
+    e->persons = sort_in_out(e->persons,e->currentFloor);
+    return e->persons;
 }
 
 
