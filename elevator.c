@@ -21,7 +21,7 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 void sort_in_out(PersonList *in,PersonList *out,int currentFloor){
     if(in!=NULL){
         if(((in -> person)-> dest) == currentFloor){
-            insert(in -> person,out);
+            out = insert(in -> person,out);
             in = (in->next);
             sort_in_out(in,out,currentFloor);
         }
@@ -38,20 +38,18 @@ PersonList* exitElevator(Elevator *e){
     return t;
 }
 
-void sort_in_out2(PersonList *in,PersonList *out,int capacity){
-    if(length(in)<capacity){
-        insert(out -> person,in);
-        out = (out->next);
-        sort_in_out2(in,out,capacity);
+
+PersonList* enterElevator(Elevator *e, PersonList *waitingList){
+    if(length(e->persons)<e->capacity){
+        e->persons = insert((waitingList->person),e->persons);
+        waitingList = (waitingList->next);
+        return enterElevator(e,waitingList);
+    }
+    else{
+        return waitingList;
         }
     }
 
-
-PersonList* enterElevator(Elevator *e, PersonList *waitingList){
-    sort_in_out2(e->persons,waitingList,e->capacity);
-    return waitingList;
-
-}
 
 void stepElevator(Building *b){
     if(b->elevator->currentFloor==b->elevator->targetFloor){

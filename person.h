@@ -14,7 +14,6 @@ typedef struct _PersonList {
 Person* createPerson(int src, int dest);
 PersonList* insert(Person *p, PersonList *list);
 void sort_in_out(PersonList *in,PersonList *out,int currentFloor);
-void sort_in_out2(PersonList *in,PersonList *out,int capacity);
 int length(PersonList *list);
 
 
