@@ -43,8 +43,7 @@ PersonList* exitElevator(Elevator *e){
 PersonList* enterElevator(Elevator *e, PersonList *waitingList){
     if((length(e->persons)<(e->capacity))&&waitingList!=NULL){
         e->persons = insert((waitingList->person),e->persons);
-        waitingList = (waitingList->next);
-        return enterElevator(e,waitingList);
+        return enterElevator(e,waitingList->next);
     }
     else{
         return waitingList;
